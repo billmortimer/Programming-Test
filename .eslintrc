@@ -1,0 +1,51 @@
+{
+  "rules": {
+    "indent": [
+      "warn",
+      2
+    ],
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "semi": [
+      "warn",
+      "always"
+    ],
+    "comma-dangle": [
+      "off",
+    ],
+    "no-console": [
+      "warn",
+    ],
+    "no-unused-vars": [
+      "warn"
+    ],
+    "react/prop-types": [
+      "warn",
+      { "skipUndeclared": true }
+    ]
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "jasmine": true,
+    "phantomjs": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true,
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+  "globals": {
+
+  },
+  "plugins": [
+    "react"
+  ]
+}
