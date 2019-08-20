@@ -22,7 +22,7 @@ class GlossaryTable extends React.Component {
             {words.map((w, i) =>
               <tr key={i}>
                 <td>{w.english}</td>
-                <td>french</td>
+                <td>{w.french}</td>
               </tr>
             )}
           </tbody>
