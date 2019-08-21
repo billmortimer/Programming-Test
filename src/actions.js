@@ -1,0 +1,2 @@
+export const SORT_BY_ENGLISH = "SORT_BY_ENGLISH";
+export const HIDE_DUPLICATES = "HIDE_DUPLICATES";
