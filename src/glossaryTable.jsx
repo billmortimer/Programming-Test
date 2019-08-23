@@ -51,39 +51,33 @@ class GlossaryTable extends React.Component {
         <div className="header">
           <h1>Glossary</h1>
         </div>
-        <table className="table table-striped">
-          <thead>
-            <tr scope="row">
-                <th scope="col">
-                  <div className="btn-group btn-group-sm" role="group" aria-label="Sort Buttons">
-                    <button type="button" className="btn btn-primary active" onClick={this.handleUnsorted}>Unsorted</button>
-                    <button type="button" className="btn btn-primary" onClick={this.handleEngAsc}>English A-Z</button>
-                    <button type="button" className="btn btn-primary" onClick={this.handleEngDesc}>English Z-A</button>
-                    <button type="button" className="btn btn-primary" onClick={this.handleFrAsc}>French A-Z</button>
-                    <button type="button" className="btn btn-primary" onClick={this.handleFrDesc}>French Z-A</button>
-                  </div>
-                </th>
-                <th scope="col">  
-                  <div className="btn-group btn-group-sm" role="group" aria-label="Filter Buttons">
-                    <button type="button" className="btn btn-primary active" onClick={this.handleShowDups}>Show Duplicates</button>
-                    <button type="button" className="btn btn-primary" onClick={this.handleHideDups}>Hide Duplicates</button>
-                  </div>
-                </th>
-            </tr>
-            <tr scope="row">
-              <th scope="col">English</th>
-              <th scope="col">French</th>
-            </tr>
-          </thead>
-          <tbody>
-            {visibleWords.map((w, i) =>
-              <tr scope="row" key={i}>
-                <td scope="col">{w.english}</td>
-                <td scope="col">{w.french}</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <div className="row">
+          <div className="col-sm-6">
+            <div className="btn-group btn-group-sm" role="group" aria-label="Sort Buttons">
+              <button type="button" className="btn btn-primary" onClick={this.handleUnsorted}>Unsorted</button>
+              <button type="button" className="btn btn-primary" onClick={this.handleEngAsc}>English A-Z</button>
+              <button type="button" className="btn btn-primary" onClick={this.handleEngDesc}>English Z-A</button>
+              <button type="button" className="btn btn-primary" onClick={this.handleFrAsc}>French A-Z</button>
+              <button type="button" className="btn btn-primary" onClick={this.handleFrDesc}>French Z-A</button>
+            </div>
+          </div>
+          <div className="col-sm-6">
+            <div className="btn-group btn-group-sm" role="group" aria-label="Filter Buttons">
+              <button type="button" className="btn btn-primary" onClick={this.handleShowDups}>Show Duplicates</button>
+              <button type="button" className="btn btn-primary" onClick={this.handleHideDups}>Hide Duplicates</button>
+            </div>
+          </div>
+        </div>
+        <div className="row border">
+          <div className="col-sm-6 border font-weight-bold">English</div>
+          <div className="col-sm-6 border font-weight-bold">French</div>
+        </div>
+          {visibleWords.map((w, i) =>
+            <div className="row border" key={i}>
+              <div className="col-sm-6 border">{w.english}</div>
+              <div className="col-sm-6 border">{w.french}</div>
+            </div>
+          )}
       </div>
     );
   }
