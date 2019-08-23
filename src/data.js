@@ -1,3 +1,8 @@
+let defaultFilters = {
+  sortKey: '',
+  sortOrder: '',
+  showDuplicates: true,
+}
 let words = [
   {
     "english": "to tackle/to approach",
@@ -213,4 +218,4 @@ let words = [
   }
 ];
 
-export default words;
+export { defaultFilters, words };
