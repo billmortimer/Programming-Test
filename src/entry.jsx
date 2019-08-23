@@ -26,9 +26,10 @@ let store = createStore(
 );
 
 const unsubscribe = store.subscribe(() => {
-  console.log(store.getState());
+  //console.log(store.getState());
 });
 
+// Testing
 // store.dispatch(actions.clear());
 // console.log('ShowDups: true');
 // store.dispatch(actions.showDups(true));

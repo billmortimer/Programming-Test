@@ -5,25 +5,41 @@ import { connect } from "react-redux";
 import { getVisibleWords } from "./reducers";
 
 class GlossaryTable extends React.Component {
-  handleSort(e) {
-    e.preventDefault();
-    this.props.dispatch(actions.sortBy('french', 'desc'));
-  };
-
-  handleRemoveSort(e) {
+  handleUnsorted= (e) => {
     e.preventDefault();
     this.props.dispatch(actions.sortBy('', ''));
   };
 
-  handleFilter(e) {
+  handleEngAsc = (e) => {
+    e.preventDefault();
+    this.props.dispatch(actions.sortBy('english', 'asc'));
+  };
+
+  handleEngDesc = (e) => {
+    e.preventDefault();
+    this.props.dispatch(actions.sortBy('english', 'desc'));
+  };
+
+  handleFrAsc = (e) => {
+    e.preventDefault();
+    this.props.dispatch(actions.sortBy('french', 'asc'));
+  };
+
+  handleFrDesc = (e) => {
+    e.preventDefault();
+    this.props.dispatch(actions.sortBy('french', 'desc'));
+  };
+
+  handleShowDups = (e) => {
+    e.preventDefault();
+    this.props.dispatch(actions.showDups(true));
+  };
+
+  handleHideDups = (e) => {
     e.preventDefault();
     this.props.dispatch(actions.showDups(false));
   };
 
-  handleRemoveFilter(e) {
-    e.preventDefault();
-    this.props.dispatch(actions.showDups(true));
-  };
 
   render() {
     let { words } = this.props;
@@ -35,26 +51,35 @@ class GlossaryTable extends React.Component {
         <div className="header">
           <h1>Glossary</h1>
         </div>
-        <table className="table">
+        <table className="table table-striped">
           <thead>
-            <tr className="row">
-                <th className="col">
-                  <button type="button" className="btn btn-primary" onClick={this.handleSort.bind(this)}>Sort</button> 
-                  <button type="button" className="btn btn-primary" onClick={this.handleRemoveSort.bind(this)}>RemoveSort</button> 
-                  <button type="button" className="btn btn-primary" onClick={this.handleFilter.bind(this)}>Hide Dups</button> 
-                  <button type="button" className="btn btn-primary" onClick={this.handleRemoveFilter.bind(this)}>Show Dups</button> 
+            <tr scope="row">
+                <th scope="col">
+                  <div className="btn-group btn-group-sm" role="group" aria-label="Sort Buttons">
+                    <button type="button" className="btn btn-primary active" onClick={this.handleUnsorted}>Unsorted</button>
+                    <button type="button" className="btn btn-primary" onClick={this.handleEngAsc}>English A-Z</button>
+                    <button type="button" className="btn btn-primary" onClick={this.handleEngDesc}>English Z-A</button>
+                    <button type="button" className="btn btn-primary" onClick={this.handleFrAsc}>French A-Z</button>
+                    <button type="button" className="btn btn-primary" onClick={this.handleFrDesc}>French Z-A</button>
+                  </div>
+                </th>
+                <th scope="col">  
+                  <div className="btn-group btn-group-sm" role="group" aria-label="Filter Buttons">
+                    <button type="button" className="btn btn-primary active" onClick={this.handleShowDups}>Show Duplicates</button>
+                    <button type="button" className="btn btn-primary" onClick={this.handleHideDups}>Hide Duplicates</button>
+                  </div>
                 </th>
             </tr>
-            <tr className="row">
-              <th className="col">English</th>
-              <th className="col">French</th>
+            <tr scope="row">
+              <th scope="col">English</th>
+              <th scope="col">French</th>
             </tr>
           </thead>
           <tbody>
             {visibleWords.map((w, i) =>
-              <tr className="row" key={i}>
-                <td className="col">{w.english}</td>
-                <td className="col">{w.french}</td>
+              <tr scope="row" key={i}>
+                <td scope="col">{w.english}</td>
+                <td scope="col">{w.french}</td>
               </tr>
             )}
           </tbody>
@@ -72,5 +97,7 @@ let mapStateToProps = (state) => {
     filters,
   };
 };
+
+// Not using mapDispatchToProps to shorthand calls to dispatching the various actions and then connecting it.
 
 export default connect(mapStateToProps)(GlossaryTable);
