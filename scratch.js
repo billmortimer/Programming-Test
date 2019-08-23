@@ -63,3 +63,13 @@ return words.filter(word => {
     return false;
   }
 });
+
+// // Every time the state changes, run getVisibleWords
+// const unsubscribe = store.subscribe(() => {
+//   const state = store.getState();
+//   // console.log('In subscribe');
+//   // console.log(state.words);
+//   // console.log(state.filters);
+//   const visibleWords = getVisibleWords(state.words, state.filters);
+//   console.log(visibleWords);
+// });
